@@ -47,7 +47,7 @@ export const closestEl =
 
 // `requestAnimationFrame()` convenience method
 /* istanbul ignore next: JSDOM always returns the first option */
-export const requestAF =
+export const requestAF = (
   w.requestAnimationFrame ||
   w.webkitRequestAnimationFrame ||
   w.mozRequestAnimationFrame ||
@@ -56,7 +56,8 @@ export const requestAF =
   // Fallback, but not a true polyfill
   // Only needed for Opera Mini
   /* istanbul ignore next */
-  (cb => setTimeout(cb, 16))
+  ((cb) => setTimeout(cb, 16))
+).bind(w)
 
 export const MutationObs =
   w.MutationObserver || w.WebKitMutationObserver || w.MozMutationObserver || null
